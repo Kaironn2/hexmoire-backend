@@ -7,3 +7,22 @@ requires-python = ">=3.14"
 dependencies = [
     "pwdlib[argon2]>=0.3.0",
 ]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.15.4",
+    "taskipy>=1.14.1",
+]
+
+[tool.ruff]
+extend-exclude = ['migrations']
+line-length = 120
+
+[tool.ruff.lint]
+preview = true
+select = ['I', 'F', 'E', 'W', 'PL', 'PT', 'FAST']
+ignore = ['E501', 'I001', 'PLR1702', 'PLR0913', 'PLR0917']
+
+[tool.ruff.format]
+preview = true
+quote-style = 'single'
