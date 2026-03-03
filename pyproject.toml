@@ -32,3 +32,11 @@ ignore = ['E501', 'I001', 'PLR1702', 'PLR0913', 'PLR0917']
 [tool.ruff.format]
 preview = true
 quote-style = 'single'
+
+[tool.taskipy.tasks]
+up = 'docker-compose up -d --build'
+run = 'uvicorn src.app:app --reload --reload-dir src'
+format = 'ruff format'
+tree = 'tree /F'
+makemigrations = 'alembic revision --autogenerate -m'
+migrate = 'alembic upgrade head'
