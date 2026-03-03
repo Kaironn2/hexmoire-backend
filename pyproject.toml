@@ -1,0 +1,9 @@
+[project]
+name = "hexmoire-backend"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "pwdlib[argon2]>=0.3.0",
+]
