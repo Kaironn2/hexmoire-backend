@@ -5,7 +5,10 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
+    "alembic>=1.18.4",
+    "asyncpg>=0.31.0",
     "pwdlib[argon2]>=0.3.0",
+    "sqlalchemy[asyncio]>=2.0.48",
 ]
 
 [dependency-groups]
