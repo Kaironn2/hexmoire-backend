@@ -35,4 +35,4 @@ def get_database_url(config: Config) -> URL:
 if config.PROD:
     DATABASE_URL = get_database_url(config)
 else:
-    DATABASE_URL = 'sqlite+aiosqlite:////home/hex/app.db'
+    DATABASE_URL = 'sqlite+aiosqlite:///./db.db'
