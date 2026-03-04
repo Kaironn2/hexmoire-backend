@@ -3,7 +3,7 @@ import logging
 from src.tasks.broker import broker
 from src.core.settings import config
 from src.infra.http.client import HttpClient
-from src.bots.steam.achievements import SteamAchievementsCrawler
+from src.bots.steam.crawlers.achievements import SteamAchievementsCrawler
 
 logger = logging.getLogger(__name__)
 
