@@ -4,7 +4,6 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 from sqlalchemy.engine import URL
 
 from src.infra.http.config import HttpClientConfig
-from src.infra.browser.config import BrowserConfig
 
 ROOT_DIR = Path(__file__).resolve().parents[2]
 DATA_DIR = ROOT_DIR / 'data'
@@ -59,16 +58,6 @@ class Config(BaseSettings):
             retry_backoff=self.HTTP_RETRY_BACKOFF,
             proxy=self.HTTP_PROXY,
             verify_ssl=self.HTTP_VERIFY_SSL,
-        )
-
-    @property
-    def browser_config(self) -> BrowserConfig:
-        """Build the global BrowserConfig from env settings."""
-        return BrowserConfig(
-            headless=self.BROWSER_HEADLESS,
-            browser_type=self.BROWSER_TYPE,
-            default_timeout=self.BROWSER_DEFAULT_TIMEOUT,
-            max_concurrent_pages=self.BROWSER_MAX_CONCURRENT_PAGES,
         )
 
 
