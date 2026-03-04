@@ -1,4 +1,5 @@
 import logging
+from typing import TypeVar
 
 from src.bots.base import BaseCrawler, BaseAutomation, HybridBot
 
@@ -6,6 +7,7 @@ logger = logging.getLogger(__name__)
 
 # Type alias for any bot type
 BotType = type[BaseCrawler] | type[BaseAutomation] | type[HybridBot]
+_T = TypeVar('_T', bound=type[BaseCrawler] | type[BaseAutomation] | type[HybridBot])
 
 # Global bot registry
 _registry: dict[str, BotType] = {}
@@ -29,7 +31,7 @@ def register_bot(name: str | None = None):
                 ...
     """
 
-    def decorator(cls: BotType) -> BotType:
+    def decorator(cls: _T) -> _T:
         bot_name = name or cls.__name__
         if bot_name in _registry:
             logger.warning('Bot "%s" is already registered. Overwriting.', bot_name)

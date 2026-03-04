@@ -2,7 +2,6 @@ from fastapi import APIRouter
 
 from .dependencies import UserServiceDep
 from .schemas import UserIn, UserOut
-from .service import UserService
 
 user_router = APIRouter(prefix='/users', tags=['users'])
 

@@ -3,7 +3,7 @@ from abc import ABC, abstractmethod
 from typing import Any, ClassVar
 
 from src.infra.http.client import HttpClient
-from src.infra.http.config import HttpClientConfig
+from src.infra.http.config import HttpClientConfig, HttpConfigOverrides
 from src.infra.browser.client import BrowserClient
 
 
@@ -27,7 +27,7 @@ class BaseCrawler(ABC):
                 return [{"title": t} for t in titles]
     """
 
-    http_config_overrides: ClassVar[dict[str, Any]] = {}
+    http_config_overrides: ClassVar[HttpConfigOverrides] = {}
 
     def __init__(self, http: HttpClient):
         self.http = http
@@ -95,7 +95,7 @@ class HybridBot(ABC):
                 return {"api": data, "page": content}
     """
 
-    http_config_overrides: ClassVar[dict[str, Any]] = {}
+    http_config_overrides: ClassVar[HttpConfigOverrides] = {}
 
     def __init__(self, http: HttpClient, browser: BrowserClient):
         self.http = http
