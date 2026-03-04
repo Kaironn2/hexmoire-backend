@@ -1,6 +1,27 @@
 from __future__ import annotations
 
+from typing import TypedDict
+
 from pydantic import BaseModel
+
+
+class HttpConfigOverrides(TypedDict, total=False):
+    """Allowed overrides for HttpClientConfig.
+
+    Use this as the type for ``http_config_overrides`` in bot base classes
+    so that only valid config fields are accepted.
+    """
+
+    max_concurrent: int
+    max_per_domain: int
+    timeout: float
+    retries: int
+    retry_backoff: float
+    retry_status_codes: set[int]
+    default_headers: dict[str, str]
+    proxy: str | None
+    follow_redirects: bool
+    verify_ssl: bool
 
 
 class HttpClientConfig(BaseModel):
