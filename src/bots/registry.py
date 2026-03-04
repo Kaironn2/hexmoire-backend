@@ -1,13 +1,13 @@
 import logging
 from typing import TypeVar
 
-from src.bots.base import BaseCrawler, BaseAutomation, HybridBot
+from src.bots.base import BaseCrawler
 
 logger = logging.getLogger(__name__)
 
 # Type alias for any bot type
-BotType = type[BaseCrawler] | type[BaseAutomation] | type[HybridBot]
-_T = TypeVar('_T', bound=type[BaseCrawler] | type[BaseAutomation] | type[HybridBot])
+BotType = type[BaseCrawler]
+_T = TypeVar('_T', bound=type[BaseCrawler])
 
 # Global bot registry
 _registry: dict[str, BotType] = {}
