@@ -42,6 +42,7 @@ quote-style = 'single'
 
 [tool.taskipy.tasks]
 up = 'docker-compose up -d --build'
+pre_run = 'task migrate'
 run = 'uvicorn src.app:app --reload --reload-dir src'
 worker = 'taskiq worker src.tasks.broker:broker src.tasks.steam'
 format = 'ruff format'
